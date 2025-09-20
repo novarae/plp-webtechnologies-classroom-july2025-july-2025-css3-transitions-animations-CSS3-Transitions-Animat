@@ -1,0 +1,74 @@
+/* Part 1: Button with transition */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.5s ease, transform 0.3s ease;
+}
+button:hover {
+  background-color: #4caf50;
+  transform: scale(1.1);
+}
+
+/* Light/Dark Theme */
+body {
+  transition: background-color 0.5s, color 0.5s;
+}
+body.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Part 2: Card Flip */
+.card {
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 20px auto;
+}
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  background: #f0f0f0;
+}
+.card-back {
+  background: #333;
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+/* Part 3: Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 300px;
+  animation: slideIn 0.5s forwards;
+}
+@keyframes slideIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
